@@ -47,12 +47,10 @@ const Cart = () => {
     if (!promoInput) return;
 
     try {
-      const res = await axios.post(
-        "https://web-production-fe5b6.up.railway.app/api/promocodes/validate/",
-        {
-          code: promoInput.toUpperCase(),
-        }
-      );
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+      const res = await axios.post(`${apiBaseUrl}/api/promocodes/validate/`, {
+        code: promoInput.toUpperCase(),
+      });
 
       if (res.data.valid) {
         applyPromoCode(promoInput.toUpperCase(), res.data.discount);

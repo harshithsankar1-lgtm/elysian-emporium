@@ -94,9 +94,8 @@ const BannerCarousel = () => {
     const fetchBanners = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          "http://web-production-fe5b6.up.railway.app/api/banners/"
-        ); // Django API endpoint
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await axios.get(`${apiBaseUrl}/api/banners/`);
         setBanners(response.data);
       } catch (error) {
         console.error("Failed to fetch banners", error);

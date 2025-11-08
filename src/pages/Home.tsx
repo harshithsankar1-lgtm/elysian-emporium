@@ -14,8 +14,9 @@ const Home = () => {
     const fetchFeaturedProducts = async () => {
       try {
         setLoading(true);
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
         const response = await axios.get(
-          "http://web-production-fe5b6.up.railway.app/api/products/?featured=true"
+          `${apiBaseUrl}/api/products/?featured=true`
         );
         setFeaturedProducts(response.data);
       } catch (error) {

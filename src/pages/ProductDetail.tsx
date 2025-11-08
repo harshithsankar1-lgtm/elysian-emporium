@@ -288,9 +288,8 @@ const ProductDetail = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `http://web-production-fe5b6.up.railway.app/api/products/${id}/`
-        );
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await axios.get(`${apiBaseUrl}/api/products/${id}`);
         setProduct(response.data);
         setSelectedQuantity(response.data.quantities[0]);
       } catch (error) {
